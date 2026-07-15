@@ -2,15 +2,19 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 
-// ADD YOUR PHOTOS HERE — just put images in public/gallery/ and add entries below
 const photos = [
-  { src: '/gallery/sample1.jpg', caption: 'Youth Gathering 2025' },
-  { src: '/gallery/sample2.jpg', caption: 'Agape - Food Distribution' },
-  { src: '/gallery/sample3.jpg', caption: 'Jeevanam Blood Donation Camp' },
-  { src: '/gallery/sample4.jpg', caption: 'Ivanian Symphony 2024' },
-  { src: '/gallery/sample5.jpg', caption: 'Christmas Carol' },
-  { src: '/gallery/sample6.jpg', caption: 'Annual Retreat' },
-  // Add more: { src: '/gallery/your-image.jpg', caption: 'Description' },
+  { src: '/gallery/photo-1.jpeg', caption: 'MCYM Pullad' },
+  { src: '/gallery/photo-2.jpeg', caption: 'MCYM Pullad' },
+  { src: '/gallery/photo-3.jpeg', caption: 'MCYM Pullad' },
+  { src: '/gallery/photo-4.jpeg', caption: 'MCYM Pullad' },
+  { src: '/gallery/photo-5.jpeg', caption: 'MCYM Pullad' },
+  { src: '/gallery/photo-6.jpeg', caption: 'MCYM Pullad' },
+  { src: '/gallery/photo-7.jpeg', caption: 'MCYM Pullad' },
+  { src: '/gallery/photo-8.jpeg', caption: 'MCYM Pullad' },
+  { src: '/gallery/photo-9.jpeg', caption: 'MCYM Pullad' },
+  { src: '/gallery/photo-10.jpeg', caption: 'MCYM Pullad' },
+  { src: '/gallery/photo-11.jpeg', caption: 'MCYM Pullad' },
+  { src: '/gallery/photo-12.jpeg', caption: 'MCYM Pullad' },
 ]
 
 export default function Gallery() {
@@ -71,9 +75,7 @@ export default function Gallery() {
           ))}
         </div>
 
-        <p className="text-center text-gray-400 text-sm mt-8">
-          💡 To add photos: place images in <code className="bg-gray-100 px-2 py-0.5 rounded">public/gallery/</code> and update the list in Gallery.jsx
-        </p>
+
       </div>
 
       {/* Lightbox */}

@@ -16,27 +16,32 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Flag color bands - Red, White, Yellow */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#C41E3A] via-white to-[#FFD700]" />
-        <div className="absolute inset-0 bg-black/60" />
+      {/* Church image as background */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-fixed scale-105"
+        style={{ backgroundImage: "url('/images/church.jpeg')" }}
+      />
+
+      {/* Dark overlay with flag color tint */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+
+      {/* Flag color accent strips at top */}
+      <div className="absolute top-0 left-0 right-0 h-1.5 flex">
+        <div className="flex-1 bg-[#C41E3A]" />
+        <div className="flex-1 bg-white" />
+        <div className="flex-1 bg-[#FFD700]" />
       </div>
 
       {/* Floating orbs */}
       <motion.div
         animate={{ y: [0, -30, 0], x: [0, 20, 0] }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-1/4 left-1/6 w-64 h-64 bg-[#C41E3A]/20 rounded-full blur-3xl"
+        className="absolute top-1/4 left-1/6 w-64 h-64 bg-[#C41E3A]/10 rounded-full blur-3xl"
       />
       <motion.div
         animate={{ y: [0, 40, 0], x: [0, -20, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-1/4 right-1/6 w-80 h-80 bg-[#FFD700]/20 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{ y: [0, -20, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-1/2 left-1/2 w-48 h-48 bg-white/10 rounded-full blur-3xl"
+        className="absolute bottom-1/4 right-1/6 w-80 h-80 bg-[#FFD700]/10 rounded-full blur-3xl"
       />
 
       {/* Content */}
@@ -93,15 +98,24 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="text-white/70 text-lg sm:text-xl max-w-2xl mx-auto mb-12"
+          className="text-white/80 text-lg sm:text-xl max-w-2xl mx-auto mb-4"
         >
           Together in Faith, Service & Leadership
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+          className="text-white/50 text-sm mb-12"
+        >
+          St. Antony's Malankara Catholic Church, Pullad
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
+          transition={{ duration: 0.8, delay: 1.4 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <a

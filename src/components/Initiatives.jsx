@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FiHeart, FiDroplet, FiShield, FiMusic } from 'react-icons/fi'
+import { FiHeart, FiDroplet, FiShield, FiMusic, FiGift } from 'react-icons/fi'
 
 const initiatives = [
   {
@@ -8,23 +8,21 @@ const initiatives = [
     description:
       'Providing medical assistance and support to those who cannot afford healthcare. We help with medicines, hospital bills, and health camps.',
     icon: FiShield,
+    image: '/initiatives/ashraya.jpg',
     color: 'from-teal to-teal-dark',
-    bgGlow: 'bg-teal/10',
-    borderColor: 'border-teal/30',
-    iconBg: 'bg-teal/20',
     iconColor: 'text-teal',
+    badge: 'bg-teal/20 text-teal',
   },
   {
     name: 'Agape',
     tagline: 'Food for the Hungry',
     description:
-      'Every month, we provide food kits and meals to the poor and underprivileged families in our community. Love expressed through sharing.',
+      'Every month, we provide food kits and meals to families in our community. Love expressed through sharing.',
     icon: FiHeart,
+    image: '/initiatives/agape.jpg',
     color: 'from-accent to-gold',
-    bgGlow: 'bg-accent/10',
-    borderColor: 'border-accent/30',
-    iconBg: 'bg-accent/20',
     iconColor: 'text-accent',
+    badge: 'bg-accent/20 text-accent',
   },
   {
     name: 'Jeevanam',
@@ -32,11 +30,10 @@ const initiatives = [
     description:
       'A blood donation campaign where our members donate blood to those in need. Anyone can reach out to us when they require blood.',
     icon: FiDroplet,
+    image: '/initiatives/jeevanam.jpg',
     color: 'from-purple to-purple-light',
-    bgGlow: 'bg-purple/10',
-    borderColor: 'border-purple/30',
-    iconBg: 'bg-purple/20',
     iconColor: 'text-purple',
+    badge: 'bg-purple/20 text-purple',
   },
   {
     name: 'Ivanian Symphony',
@@ -44,11 +41,21 @@ const initiatives = [
     description:
       'Our signature yearly event — a grand group song competition that brings together talent, teamwork, and the spirit of music.',
     icon: FiMusic,
+    image: '/initiatives/ivanian.jpg',
     color: 'from-gold to-accent',
-    bgGlow: 'bg-gold/10',
-    borderColor: 'border-gold/30',
-    iconBg: 'bg-gold/20',
     iconColor: 'text-gold',
+    badge: 'bg-gold/20 text-gold',
+  },
+  {
+    name: 'Bag Distribution',
+    tagline: 'Every May — Back to School',
+    description:
+      'Every year in May, we distribute school bags and supplies to students, helping them start the academic year with confidence.',
+    icon: FiGift,
+    image: '/initiatives/bag-distribution.jpg',
+    color: 'from-primary-light to-teal',
+    iconColor: 'text-primary-light',
+    badge: 'bg-primary-light/20 text-primary-light',
   },
 ]
 
@@ -72,7 +79,7 @@ export default function Initiatives() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {initiatives.map((item, i) => (
             <motion.div
               key={item.name}
@@ -80,20 +87,32 @@ export default function Initiatives() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.12 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className={`relative group rounded-2xl border ${item.borderColor} ${item.bgGlow} backdrop-blur-sm p-7 cursor-pointer transition-all duration-300 hover:shadow-2xl`}
+              whileHover={{ y: -8 }}
+              className="group rounded-2xl overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-500 hover:shadow-2xl cursor-pointer"
             >
-              <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-
-              <div className={`w-12 h-12 ${item.iconBg} rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform`}>
-                <item.icon className={`text-xl ${item.iconColor}`} />
+              {/* Image */}
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className={`absolute inset-0 bg-gradient-to-t ${item.color} opacity-30 group-hover:opacity-50 transition-opacity`} />
+                <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold ${item.badge} backdrop-blur-sm`}>
+                  <item.icon className="inline mr-1 text-xs" />
+                  {item.name}
+                </div>
               </div>
 
-              <h3 className="text-xl font-bold text-white mb-1">{item.name}</h3>
-              <p className={`text-xs font-medium ${item.iconColor} mb-3`}>{item.tagline}</p>
-              <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
+              {/* Content */}
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-white mb-1">{item.name}</h3>
+                <p className={`text-xs font-medium ${item.iconColor} mb-3`}>{item.tagline}</p>
+                <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
+              </div>
 
-              <div className={`absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r ${item.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full`} />
+              {/* Bottom accent */}
+              <div className={`h-0.5 bg-gradient-to-r ${item.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
             </motion.div>
           ))}
         </div>

@@ -7,7 +7,7 @@ const contactItems = [
     title: 'Location',
     lines: ['St. Antony\'s Malankara Catholic Church', 'Pullad, Pathanamthitta, Kerala'],
   },
-  { icon: FiPhone, title: 'Phone', lines: ['+91 XXXXX XXXXX'] },
+  { icon: FiPhone, title: 'Phone', lines: ['+91 73061 45461'] },
   { icon: FiMail, title: 'Email', lines: ['mcympullad@gmail.com'] },
   { icon: FiInstagram, title: 'Social', lines: ['@mcympullad'] },
 ]

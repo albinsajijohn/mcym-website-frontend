@@ -1,41 +1,17 @@
 import { motion } from 'framer-motion'
-import { FiUser } from 'react-icons/fi'
 
-// ADD PHOTOS: put images in public/team/ folder and update the 'image' field
 const team = [
-  { name: 'Fr. Name', role: 'Spiritual Director', image: '/team/director.jpg' },
-  { name: 'Member Name', role: 'President', image: '/team/president.jpg' },
-  { name: 'Member Name', role: 'Vice President', image: '/team/vp.jpg' },
-  { name: 'Member Name', role: 'Secretary', image: '/team/secretary.jpg' },
-  { name: 'Member Name', role: 'Treasurer', image: '/team/treasurer.jpg' },
-  { name: 'Member Name', role: 'Joint Secretary', image: '/team/joint-secretary.jpg' },
+  { name: 'Fr. Philip Anjilimoottil', role: ' Director', image: '/team/director.jpeg' },
+  { name: 'Albin Saji', role: 'President', image: '/team/president.jpeg' },
+  { name: 'Sneha Vinod', role: 'Vice President', image: '/team/vice-president.jpeg' },
+  { name: 'Teena KS', role: 'Secretary', image: '/team/secretary.jpeg' },
+  { name: 'Abin PS', role: 'Joint Secretary', image: '/team/joint-secretary.jpeg' },
+  { name: 'Midhun John', role: 'Treasurer', image: '/team/treasurer.jpeg' },
+  { name: 'Pramod P Markose', role: 'Animator', image: '/team/animator-1.jpeg' },
+  { name: 'Bindhumol PS', role: 'Animator', image: '/team/animator-2.jpeg' },
+  { name: 'Axa Shibi', role: 'Syndicate', image: '/team/syndicate-1.jpeg' },
+  { name: 'Jobin Joy', role: 'Syndicate', image: '/team/syndicate-2.jpeg' },
 ]
-
-function Avatar({ src, name }) {
-  return (
-    <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gradient-to-br from-primary to-primary-light shadow-lg group-hover:shadow-xl group-hover:shadow-primary/20 transition-all">
-      {src ? (
-        <img
-          src={src}
-          alt={name}
-          className="w-full h-full object-cover"
-          onError={(e) => {
-            e.target.style.display = 'none'
-            e.target.parentElement.classList.add('flex', 'items-center', 'justify-center')
-            const icon = document.createElement('div')
-            icon.innerHTML = '👤'
-            icon.className = 'text-3xl'
-            e.target.parentElement.appendChild(icon)
-          }}
-        />
-      ) : (
-        <div className="w-full h-full flex items-center justify-center">
-          <FiUser className="text-3xl text-white" />
-        </div>
-      )}
-    </div>
-  )
-}
 
 export default function Team() {
   return (
@@ -52,27 +28,45 @@ export default function Team() {
           <p className="text-gray-500">Meet the team leading MCYM Pullad</p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {team.map((member, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              whileHover={{ y: -8, scale: 1.05 }}
-              className="text-center group cursor-pointer"
+              transition={{ delay: i * 0.08, type: 'spring', stiffness: 100 }}
+              whileHover={{ y: -10 }}
+              className="group cursor-pointer"
             >
-              <Avatar src={member.image} name={member.name} />
-              <h4 className="font-semibold text-dark text-sm">{member.name}</h4>
-              <p className="text-xs text-accent font-medium mt-1">{member.role}</p>
+              <div className="relative rounded-2xl overflow-hidden shadow-md group-hover:shadow-2xl transition-all duration-500">
+                {/* Image container - portrait aspect ratio */}
+                <div className="aspect-[3/4] overflow-hidden">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
+
+                {/* Gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/90 via-primary-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Info that slides up on hover */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                  <p className="text-white font-bold text-sm">{member.name}</p>
+                  <p className="text-accent text-xs font-medium">{member.role}</p>
+                </div>
+              </div>
+
+              {/* Info below card (always visible) */}
+              <div className="mt-3 text-center">
+                <h4 className="font-semibold text-dark text-sm group-hover:text-primary transition-colors">{member.name}</h4>
+                <p className="text-xs text-accent font-medium mt-0.5">{member.role}</p>
+              </div>
             </motion.div>
           ))}
         </div>
-
-        <p className="text-center text-gray-400 text-sm mt-10">
-          💡 Add photos in <code className="bg-gray-100 px-2 py-0.5 rounded">public/team/</code> folder
-        </p>
       </div>
     </section>
   )

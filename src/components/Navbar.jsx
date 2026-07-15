@@ -37,9 +37,10 @@ export default function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className={`font-medium transition-colors hover:text-accent ${scrolled ? 'text-gray-700' : 'text-white/90'}`}
+                className={`relative font-medium transition-colors hover:text-accent group ${scrolled ? 'text-gray-700' : 'text-white/90'}`}
               >
                 {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent rounded-full transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
           </div>
