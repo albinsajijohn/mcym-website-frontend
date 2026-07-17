@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Loader from './components/Loader'
 import ScrollProgress from './components/ScrollProgress'
 import Navbar from './components/Navbar'
@@ -12,10 +13,11 @@ import Team from './components/Team'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import BackToTop from './components/BackToTop'
+import Countdown from './pages/Countdown'
+import QRPoster from './pages/QRPoster'
 
-function App() {
+function Home() {
   const [loading, setLoading] = useState(true)
-
   return (
     <>
       {loading && <Loader onComplete={() => setLoading(false)} />}
@@ -34,6 +36,18 @@ function App() {
         <BackToTop />
       </div>
     </>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/launch" element={<Countdown />} />
+        <Route path="/poster" element={<QRPoster />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
